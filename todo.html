@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input class="input_type" type="text" /><button onclick="inputvalue()">
+      Add
+    </button>
+    <div class="looparray"></div>
+
+    <script>
+      const newarray = [];
+
+      function inputvalue() {
+        let inputval = document.querySelector(".input_type").value;
+        newarray.push(inputval);
+        add();
+      }
+
+      function deleteItem(index) {
+        newarray.splice(index, 1);
+        add();
+      }
+
+      function add() {
+        let list = "";
+        let newdiv = document.querySelector(".looparray");
+
+        for (let i = 0; i < newarray.length; i++) {
+          const html = `<p>${newarray[i]} <button onclick="deleteItem(${i})">delete</button></p>`;
+          list += html;
+        }
+
+        newdiv.innerHTML = list;
+        document.querySelector(".input_type").value = "";
+      }
+    </script>
+  </body>
+</html>
